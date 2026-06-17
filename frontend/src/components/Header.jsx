@@ -5,8 +5,7 @@ import { GiPotionBall } from "react-icons/gi";
 export default function Header() {
     return (
         <>
-        <div className="container-fluid p-0">
-        <header className={`w-100 d-flex justify-content-start align-items-center py-3 border-bottom border-dark gap-4`}> 
+        <header className={`mb-5 container-fluid p-0 w-100 d-flex justify-content-start align-items-center py-3 border-bottom border-2 border-dark gap-4`}> 
             <a className={`d-flex align-items-center gap-4 mx-2 text-decoration-none fs-4 ${styles.logo}`} href="#">
                 <GiPotionBall className={`${styles.potion} h1`}/>
                 <span className="text-alert">Poções e Soluções</span>
@@ -18,7 +17,6 @@ export default function Header() {
                 <li className="nav-item"><a href="#" className={`nav-link ${styles.link}`}>Sobre</a></li> 
             </ul>
         </header>
-        </div>
         </>
     )
 }

@@ -11,7 +11,11 @@
 }
 
 .link:active {
-    color: gold !important;
+    color: gold;
+}
+
+.link:focus {
+    color: gold;
 }
 
 .potion {

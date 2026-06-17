@@ -7,11 +7,45 @@ import './App.css'
 
 // testes
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 function App() {
   return (
     <>
       <Header />
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <p>Conteúdo</p>
+      <Footer />
     </>
   )
 }

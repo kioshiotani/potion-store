@@ -1,0 +1,12 @@
+.footer {
+    color: grey;
+}
+
+.links ul {
+    list-style: none;
+}
+
+.links ul li:hover{
+    color: white;
+}
+
