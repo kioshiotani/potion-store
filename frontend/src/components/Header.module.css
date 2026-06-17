@@ -1,0 +1,19 @@
+.logo {
+    color: #B9A44C;
+}
+
+.link {
+    color: gold;
+}
+
+.link:hover {
+    color: white;
+}
+
+.link:active {
+    color: gold !important;
+}
+
+.potion {
+    color: #FE9920;
+}

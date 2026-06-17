@@ -1,0 +1,20 @@
+{
+  "name": "potion-store",
+  "version": "1.0.0",
+  "description": "Trabalho desenvolvido para a disciplina SCC0219 - Introdução ao Desenvolvimento Web",
+  "homepage": "https://github.com/kioshiotani/potion-store#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kioshiotani/potion-store.git"
+  },
+  "license": "ISC",
+  "author": "Bruno Kioshi Otani",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ]
+}
