@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
-
+import { useWindowWidth } from './hooks/useWindowWidth'
 
 // testes
 import Header from './components/Header'
@@ -10,14 +10,109 @@ import About from './components/About'
 import Products from './components/Products'
 import Product from './components/Product'
 import MinecraftPotion from '../assets/images/MinecraftPotion.webp'
+import ProductPage from './components/ProductPage'
+
+const produtosTeste = [
+  { id: 1, name: "Poção de Cura", image: MinecraftPotion, desc: "Restaura vida instantaneamente.", price: "10" },
+  { id: 2, name: "Poção de Força", image: MinecraftPotion, desc: "Aumenta o dano causado.", price: "15" },
+  { id: 3, name: "Poção de Velocidade", image: MinecraftPotion, desc: "Move-se mais rápido.", price: "12" },
+  { id: 4, name: "Poção de Visão Noturna", image: MinecraftPotion, desc: "Veja no escuro.", price: "20" },
+  { id: 5, name: "Poção de Invisibilidade", image: MinecraftPotion, desc: "Torne-se imperceptível.", price: "25" },
+  { id: 6, name: "Poção de Salto", image: MinecraftPotion, desc: "Pule mais alto.", price: "18" },
+  { id: 7, name: "Poção de Resistência ao Fogo", image: MinecraftPotion, desc: "Imune ao dano de fogo.", price: "22" },
+  { id: 8, name: "Poção de Respiração Aquática", image: MinecraftPotion, desc: "Respire embaixo da água.", price: "30" },
+  { id: 9, name: "Poção de Regeneração", image: MinecraftPotion, desc: "Recupera vida lentamente.", price: "28" },
+  { id: 10, name: "Poção de Absorção", image: MinecraftPotion, desc: "Aumenta pontos de vida máxima.", price: "35" },
+  { id: 11, name: "Poção de Lentidão", image: MinecraftPotion, desc: "Reduz velocidade de movimento.", price: "8" },
+  { id: 12, name: "Poção de Fraqueza", image: MinecraftPotion, desc: "Reduz dano causado.", price: "7" },
+  { id: 13, name: "Poção de Veneno", image: MinecraftPotion, desc: "Causa dano contínuo.", price: "12" },
+  { id: 14, name: "Poção de Morte", image: MinecraftPotion, desc: "Causa dano imediato letal.", price: "50" },
+  { id: 15, name: "Poção de Levitação", image: MinecraftPotion, desc: "Flutua no ar lentamente.", price: "40" },
+  { id: 16, name: "Poção de Visão Noturna II", image: MinecraftPotion, desc: "Visão noturna potencializada.", price: "25" },
+  { id: 17, name: "Poção de Força II", image: MinecraftPotion, desc: "Dano aumentado significativamente.", price: "20" },
+  { id: 18, name: "Poção de Velocidade II", image: MinecraftPotion, desc: "Velocidade máxima de movimento.", price: "15" },
+  { id: 19, name: "Poção de Cura II", image: MinecraftPotion, desc: "Restaura muita vida de uma vez.", price: "15" },
+  { id: 20, name: "Poção de Salto II", image: MinecraftPotion, desc: "Pule altíssimo.", price: "22" },
+  { id: 21, name: "Poção de Resistência ao Fogo II", image: MinecraftPotion, desc: "Imunidade total ao fogo.", price: "28" },
+  { id: 22, name: "Poção de Regeneração II", image: MinecraftPotion, desc: "Recupera vida muito rapidamente.", price: "32" },
+  { id: 23, name: "Poção de Absorção II", image: MinecraftPotion, desc: "Absorção máxima de dano.", price: "40" },
+  { id: 24, name: "Poção de Sorte", image: MinecraftPotion, desc: "Aumenta chance de drops.", price: "45" },
+  { id: 25, name: "Poção de Glowing", image: MinecraftPotion, desc: "Brilha na escuridão.", price: "18" },
+  { id: 26, name: "Poção de Sacudida", image: MinecraftPotion, desc: "Causa instabilidade visual.", price: "12" },
+  { id: 27, name: "Poção de Cura Leve", image: MinecraftPotion, desc: "Restaura pouca vida.", price: "5" },
+  { id: 28, name: "Poção de Haste", image: MinecraftPotion, desc: "Aumenta velocidade de mineração.", price: "16" },
+  { id: 29, name: "Poção de Fadiga", image: MinecraftPotion, desc: "Reduz velocidade de mineração.", price: "6" },
+  { id: 30, name: "Poção de Resistência", image: MinecraftPotion, desc: "Reduz dano recebido.", price: "24" },
+  { id: 31, name: "Poção de Cura Longa", image: MinecraftPotion, desc: "Efeito de cura prolongado.", price: "18" },
+  { id: 32, name: "Poção de Força Longa", image: MinecraftPotion, desc: "Força mantida por mais tempo.", price: "19" },
+  { id: 33, name: "Poção de Velocidade Longa", image: MinecraftPotion, desc: "Velocidade prolongada.", price: "14" },
+  { id: 34, name: "Poção de Invisibilidade Longa", image: MinecraftPotion, desc: "Invisibilidade por mais tempo.", price: "28" },
+  { id: 35, name: "Poção de Salto Longa", image: MinecraftPotion, desc: "Salto prolongado.", price: "20" },
+  { id: 36, name: "Poção de Regeneração Longa", image: MinecraftPotion, desc: "Regeneração estendida.", price: "30" },
+  { id: 37, name: "Poção de Resistência Longa", image: MinecraftPotion, desc: "Resistência duradoura.", price: "26" },
+  { id: 38, name: "Poção de Lentidão Longa", image: MinecraftPotion, desc: "Lentidão prolongada.", price: "9" },
+  { id: 39, name: "Poção de Fraqueza Longa", image: MinecraftPotion, desc: "Fraqueza duradoura.", price: "8" },
+  { id: 40, name: "Poção de Veneno Longo", image: MinecraftPotion, desc: "Veneno mantém por mais tempo.", price: "14" },
+  { id: 41, name: "Poção Explosiva", image: MinecraftPotion, desc: "Explode ao tocar o solo.", price: "35" },
+  { id: 42, name: "Poção Adesiva", image: MinecraftPotion, desc: "Gruda em qualquer superfície.", price: "32" },
+  { id: 43, name: "Poção de Congelamento", image: MinecraftPotion, desc: "Paralisa o alvo.", price: "38" },
+  { id: 44, name: "Poção de Calor Extremo", image: MinecraftPotion, desc: "Aquece o corpo.", price: "36" },
+  { id: 45, name: "Poção Mágica Azul", image: MinecraftPotion, desc: "Cor azul cintilante misteriosa.", price: "42" },
+  { id: 46, name: "Poção Mágica Roxa", image: MinecraftPotion, desc: "Cor roxa com efeito sobrenatural.", price: "44" },
+  { id: 47, name: "Poção Dourada", image: MinecraftPotion, desc: "Brilho dourado espetacular.", price: "48" },
+  { id: 48, name: "Poção Prata", image: MinecraftPotion, desc: "Efeito prateado elegante.", price: "46" },
+  { id: 49, name: "Poção Negra", image: MinecraftPotion, desc: "Sombria e misteriosa.", price: "50" },
+  { id: 50, name: "Poção Vermelha Intensa", image: MinecraftPotion, desc: "Vermelho vibrante e brilhante.", price: "43" },
+  { id: 51, name: "Poção de Cura Maior", image: MinecraftPotion, desc: "Restaura saúde completa.", price: "60" },
+  { id: 52, name: "Poção de Força Máxima", image: MinecraftPotion, desc: "Força do guerreiro supremo.", price: "55" },
+  { id: 53, name: "Poção de Velocidade Máxima", image: MinecraftPotion, desc: "Movimento à velocidade da luz.", price: "52" },
+  { id: 54, name: "Poção de Invisibilidade Total", image: MinecraftPotion, desc: "Desaparição completa e absoluta.", price: "65" },
+  { id: 55, name: "Poção de Salto Supremo", image: MinecraftPotion, desc: "Pule até as nuvens.", price: "58" },
+  { id: 56, name: "Poção de Proteção Divina", image: MinecraftPotion, desc: "Proteção de deuses.", price: "70" },
+  { id: 57, name: "Poção de Regeneração Infinita", image: MinecraftPotion, desc: "Cura perpetuamente.", price: "75" },
+  { id: 58, name: "Poção de Absorção Suprema", image: MinecraftPotion, desc: "Absorve todo dano possível.", price: "80" },
+  { id: 59, name: "Poção Antídoto Universal", image: MinecraftPotion, desc: "Neutraliza todos os efeitos ruins.", price: "72" },
+  { id: 60, name: "Poção de Ressurreição", image: MinecraftPotion, desc: "Retorna do mundo dos mortos.", price: "100" },
+  { id: 61, name: "Poção de Habilidade Lendária", image: MinecraftPotion, desc: "Confiança absoluta em qualquer ação.", price: "85" },
+  { id: 62, name: "Poção de Vitalidade Eterna", image: MinecraftPotion, desc: "Vida infinita e renovada.", price: "90" },
+  { id: 63, name: "Poção de Foco Mental", image: MinecraftPotion, desc: "Clareza absoluta de pensamento.", price: "38" },
+  { id: 64, name: "Poção de Coragem", image: MinecraftPotion, desc: "Elimina o medo e a hesitação.", price: "34" },
+  { id: 65, name: "Poção de Sabedoria", image: MinecraftPotion, desc: "Aumenta inteligência e conhecimento.", price: "41" },
+  { id: 66, name: "Poção de Sorte Infinita", image: MinecraftPotion, desc: "Sucesso garantido.", price: "95" },
+  { id: 67, name: "Poção de Rapidez Mental", image: MinecraftPotion, desc: "Pensa e age instantaneamente.", price: "39" },
+  { id: 68, name: "Poção de Percepção Apurada", image: MinecraftPotion, desc: "Vê tudo com detalhes perfeitos.", price: "44" },
+  { id: 69, name: "Poção de Resistência Mental", image: MinecraftPotion, desc: "Imune a confusão mental.", price: "37" },
+  { id: 70, name: "Poção de Determinação", image: MinecraftPotion, desc: "Vontade inquebrantável.", price: "33" },
+  { id: 71, name: "Poção de Libertação", image: MinecraftPotion, desc: "Quebra qualquer prisão ou bloqueio.", price: "51" },
+  { id: 72, name: "Poção de Transformação", image: MinecraftPotion, desc: "Muda sua forma e aparência.", price: "68" },
+  { id: 73, name: "Poção de Teletransporte", image: MinecraftPotion, desc: "Se move instantaneamente para longe.", price: "82" },
+  { id: 74, name: "Poção de Viagem Dimensional", image: MinecraftPotion, desc: "Acessa outras dimensões.", price: "88" },
+  { id: 75, name: "Poção de Invocação", image: MinecraftPotion, desc: "Chama aliados para ajudar.", price: "62" },
+  { id: 76, name: "Poção de Banimento", image: MinecraftPotion, desc: "Expele inimigos para longe.", price: "59" },
+  { id: 77, name: "Poção de Proteção Mágica", image: MinecraftPotion, desc: "Escudo mágico invisível.", price: "53" },
+  { id: 78, name: "Poção de Amplificação", image: MinecraftPotion, desc: "Amplifica qualquer habilidade.", price: "64" },
+  { id: 79, name: "Poção de Enfraquecimento Temporário", image: MinecraftPotion, desc: "Efeito de fraqueza breve.", price: "5" },
+  { id: 80, name: "Poção de Impulso Rápido", image: MinecraftPotion, desc: "Aceleração instantânea.", price: "19" },
+  { id: 81, name: "Poção de Defesa Reforçada", image: MinecraftPotion, desc: "Armadura mágica adicional.", price: "47" },
+  { id: 82, name: "Poção de Ataque Crítico", image: MinecraftPotion, desc: "Golpes críticos garantidos.", price: "49" },
+  { id: 83, name: "Poção de Precisão Perfeita", image: MinecraftPotion, desc: "Nunca erra um alvo.", price: "56" },
+  { id: 84, name: "Poção de Reflexão", image: MinecraftPotion, desc: "Reflete ataques recebidos.", price: "61" },
+  { id: 85, name: "Poção de Vampirismo", image: MinecraftPotion, desc: "Absorve vida dos inimigos.", price: "66" },
+  { id: 86, name: "Poção de Imortalidade", image: MinecraftPotion, desc: "Não pode morrer enquanto ativa.", price: "150" },
+  { id: 87, name: "Poção de Realeza", image: MinecraftPotion, desc: "Confere status de nobreza.", price: "77" },
+  { id: 88, name: "Poção de Majestade", image: MinecraftPotion, desc: "Inspirador e imponente.", price: "79" },
+  { id: 89, name: "Poção de Glória", image: MinecraftPotion, desc: "Reconhecimento e fama garantidos.", price: "81" },
+  { id: 90, name: "Poção de Lenda", image: MinecraftPotion, desc: "Torna-se parte da história.", price: "125" }
+];
 
 
 function App() {
+  const width = useWindowWidth()
+
   return (
     <>
       <Header />
-      <Product image={MinecraftPotion}/>
-      <Products />
+      <Products products={produtosTeste} mobile={width <= 1024 ? true : false}/>
       <About />
       <History />
       <Footer />

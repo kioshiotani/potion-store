@@ -1,12 +1,16 @@
+import styles from './Product.module.css'
+
 export default function Product(props) {
   return (
-    <div className="card bg-dark text-white" style={{width: '18rem', height: '32rem'}}>
-    <img src={props.image} className="card-img-top" />
-    <div className="card-body">
-        <h5 className="card-title">Poção Mágica</h5>
-        <p className="card-text overflow-scroll" style={{maxHeight: '15%'}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem officiis quasi doloremque sed ipsa, eveniet illo, sapiente est cumque, modi obcaecati ducimus veniam nisi omnis. Necessitatibus, magnam odit! Tempora, vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet esse ab aliquam dolorum, et maxime aperiam assumenda sequi minima odit officiis numquam iusto tenetur, corporis incidunt quos illo minus vel.</p>
-        <p className="h5">$</p>
-        <a href="#" className="btn btn-primary">Comprar</a>
+    <div className={`card bg-dark text-white ${styles.card}`} >
+    <img src={props.image} className={`h-50 card-img-top ${styles.image}`} />
+    <div className="h-50 card-body d-flex flex-column justify-content-around">
+        <h5 className={`card-title ${styles.name}`}>{props.name}</h5>
+        <p className={`card-text overflow-y-auto ${styles.desc}`} >{props.desc}</p>
+        <div className="d-flex flex-column justify-content-around gap-2 bottom-0"> 
+          <p className="h5">$ {props.price}</p>
+          <a href="#" className={`btn ${styles.button}`}>Comprar</a>
+        </div>
     </div>
     </div> 
     );

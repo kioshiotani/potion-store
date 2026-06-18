@@ -1,0 +1,28 @@
+.image {
+    max-height: 35%;
+    width: auto;
+    object-fit: contain;
+}
+
+.card {
+    width: 18rem;
+    height: 22rem;
+}
+
+.desc {
+    max-height: 33%;
+}
+
+.button {
+    background-color: #FA7921;
+}
+
+.button:hover {
+    background-color: #FE9920;
+    color: black;
+}
+
+.name {
+    overflow-y: auto;
+    white-space: nowrap;
+}

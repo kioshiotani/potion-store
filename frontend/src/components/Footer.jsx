@@ -4,8 +4,6 @@ import { MdOutlineEmail } from "react-icons/md"
 
 
 export default function Footer() {
-    console.log(`Conteúdo de module ${styles.footer}`)
-
     return(
         <>
         <footer className={`gap-3 mt-5 border-top border-2 border-dark p-3 container-fluid d-flex justify-content-center ${styles.footer} flex-column align-items-center`}>
@@ -22,12 +20,11 @@ export default function Footer() {
                     <h5>Links Úteis</h5>
                     <ul className={`p-0`}>
                         <li><a className={`nav-link`} href="#history">História</a></li>
-                        <li><a className={`nav-link`} href="#">Produtos</a></li>
-                        <li><a className={`nav-link`} href="#">Contato</a></li>
-                        <li><a className={`nav-link`} href="#">Sobre</a></li>
+                        <li><a className={`nav-link`} href="#products">Produtos</a></li>
+                        <li><a className={`nav-link`} href="#about">Sobre</a></li>
                     </ul>
                 </nav>
-                <div className={`${styles.contact} d-flex flex-column col-12 col-md-3 gap-2`}> 
+                <div id="contact" className={`${styles.contact} d-flex flex-column col-12 col-md-3 gap-2`}> 
                     <h5>Contate-me</h5>
                     <span><FaWhatsapp /> (18) 98431-4234</span>
                     <span><MdOutlineEmail /> contato@pocoesesolucoes.com</span>

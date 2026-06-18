@@ -3,7 +3,7 @@ import PotionStoreAnnabelleImage from '../../assets/images/PotionStoreAnnabelle.
 export default function About() {
 
     return (
-        <section className='mx-md-5 my-5 p-4 p-md-5 shadow-lg'>
+        <section id="about" className='mx-md-5 my-5 p-4 p-md-5 shadow-lg'>
             <h1 className="display-4">Sobre a nossa loja</h1>
             <div className="row">
                 <div className="col-12 col-md-6 mb-3">

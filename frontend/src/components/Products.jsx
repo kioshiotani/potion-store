@@ -1,35 +1,39 @@
-export default function Products() {
+import { useState } from 'react'
+import { Carousel } from 'react-bootstrap'
+import ProductPage from './ProductPage'
 
+export default function Products(props) {
+    const [currentSlide, setCurrentSlide] = useState(0)
+
+    const getSlides = () => {
+        if(props.mobile) {
+            return props.products.map(product => [product])
+        } else {
+            const slides = []
+            for(let i = 0; i < props.products.length; i += 6) {
+                slides.push(props.products.slice(i, i + 6))
+            }
+            return slides
+        }
+    }
+
+
+    const slides = getSlides()
+
+    const handleSelect = (selectedIndex) => {
+        setCurrentSlide(selectedIndex)
+    }
 
     return (
-        <div className="mx-md-5 shadow-lg p-md-5 p-4 d-flex flex-column gap-5">
+        <div id="products" className="mx-md-5 shadow-lg p-md-5 p-4 d-flex flex-column">
             <h1 className="mx-auto display-4">Nossos Produtos</h1>
-            <div id="productsCarousel" className="carousel slide">
-                <div className="carousel-indicators">
-                    <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div className="carousel-inner">
-                    <div className="carousel-item active">
-                    <img src="..." className="d-block w-100" alt="..."/>
-                    </div>
-                    <div className="carousel-item">
-                    <img src="..." className="d-block w-100" alt="..."/>
-                    </div>
-                    <div className="carousel-item">
-                    <img src="..." className="d-block w-100" alt="..."/>
-                    </div>
-                </div>
-                <button className="carousel-control-prev" type="button" data-bs-target="#productsCarousel" data-bs-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
-                </button>
-                <button className="carousel-control-next" type="button" data-bs-target="#productsCarousel" data-bs-slide="next">
-                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
-                </button>
-            </div>
+            <Carousel activeIndex={currentSlide} onSelect={handleSelect}>
+                {slides.map((slideProducts, slideIndex) => (
+                    <Carousel.Item key={slideIndex}>
+                        <ProductPage mobile={props.mobile} products={slideProducts} />
+                    </Carousel.Item>
+                ))}
+            </Carousel>
         </div>
     )
 }
