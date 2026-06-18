@@ -1,5 +1,6 @@
 export default function Products() {
 
+
     return (
         <div className="mx-md-5 shadow-lg p-md-5 p-4 d-flex flex-column gap-5">
             <h1 className="mx-auto display-4">Nossos Produtos</h1>

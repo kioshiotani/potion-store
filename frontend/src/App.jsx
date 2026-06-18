@@ -8,11 +8,15 @@ import Footer from './components/Footer'
 import History from './components/History'
 import About from './components/About'
 import Products from './components/Products'
+import Product from './components/Product'
+import MinecraftPotion from '../assets/images/MinecraftPotion.webp'
+
 
 function App() {
   return (
     <>
       <Header />
+      <Product image={MinecraftPotion}/>
       <Products />
       <About />
       <History />

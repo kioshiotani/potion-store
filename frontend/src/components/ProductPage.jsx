@@ -4,6 +4,8 @@ export default function ProductPage(props) {
 
 
     return (
-        <div></div>
+        <div className="container">
+            
+        </div>
     )
 }
