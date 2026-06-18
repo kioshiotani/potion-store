@@ -15,13 +15,13 @@ export default function Footer() {
                     <p>
                         Transforme seus desafios em conquistas com a magia da Poções e Soluções. Gerenciada por Annabelle 
                         Merigold, nossa loja oferece o equilíbrio perfeito entre tradição e eficácia, destacando-se pela 
-                        poção que é segredo absoluto entre os melhores universitários: o sucesso em forma líquida.
+                        poção que é segredo absoluto entre os melhores universitários: a Poção da Boa Nota.
                     </p>
                 </div>
                 <nav className={`${styles.links} col-12 col-md-3 d-flex flex-column justify-content-start align-items-start`}>
                     <h5>Links Úteis</h5>
                     <ul className={`p-0`}>
-                        <li><a className={`nav-link`} href="#">História</a></li>
+                        <li><a className={`nav-link`} href="#history">História</a></li>
                         <li><a className={`nav-link`} href="#">Produtos</a></li>
                         <li><a className={`nav-link`} href="#">Contato</a></li>
                         <li><a className={`nav-link`} href="#">Sobre</a></li>
