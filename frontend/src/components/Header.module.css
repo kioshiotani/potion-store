@@ -21,3 +21,9 @@
 .potion {
     color: #FE9920;
 }
+
+.header {
+    top: 0;
+    z-index: 500;
+    position: sticky;
+}

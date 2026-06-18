@@ -2,4 +2,7 @@ body {
   background-color: #1c1d22 !important; 
   color: white !important;
   font-family: 'Gill Sans' !important;
+  height: 100vh;
+  margin: 0;
 }
+
