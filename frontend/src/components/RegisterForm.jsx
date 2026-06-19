@@ -33,7 +33,7 @@ export default function RegisterForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        if(formData.name !== "" && formData.desc !== "" && formData.price !== "" && formData.image !== "") {
+        if(formData.name !== "" && formData.price !== "" && formData.image !== "") {
             const parsedPrice = parseFloat(formData.price).toFixed(2)
 
             const obj = {
