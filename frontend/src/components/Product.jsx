@@ -2,7 +2,7 @@ import styles from './Product.module.css'
 
 export default function Product(props) {
   return (
-    <div className={`card bg-dark text-white ${styles.card}`} >
+    <div className={`p-2 card bg-dark text-white ${styles.card}`} >
     <img src={props.image} className={`h-50 card-img-top ${styles.image}`} />
     <div className="h-50 card-body d-flex flex-column justify-content-around">
         <h5 className={`card-title ${styles.name}`}>{props.name}</h5>

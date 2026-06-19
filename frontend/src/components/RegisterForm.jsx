@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState, useEffect } from 'react'
 import styles from './RegisterForm.module.css'
+import productService from '../services/product.service'
 
 export default function RegisterForm(props) {
     const [formData, setFormData] = useState({
@@ -31,7 +32,7 @@ export default function RegisterForm(props) {
         } 
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
         if(formData.name !== "" && formData.price !== "" && formData.image !== "") {
             const parsedPrice = parseFloat(formData.price).toFixed(2)
@@ -40,16 +41,21 @@ export default function RegisterForm(props) {
                 ...formData,
                 price: parsedPrice
             }
-            // colocar depois o servico de submeter
 
-            setFormData({
-                name: "",
-                desc: "",
-                price: "",
-                image: ""
-            })
+            const res = await productService.registerProduct(obj)
+            
+            if(res.status === 201) {
+                setFormData({
+                    name: "",
+                    desc: "",
+                    price: "",
+                    image: ""
+                })
 
-            props.submitted()
+                props.submitted()
+            } else {
+                alert("Erro ao tentar registrar produto. Tente novamente.")
+            }
         }
     }
 

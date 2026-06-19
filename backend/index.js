@@ -1,12 +1,9 @@
 import model from './src/models/product.model.js'
-import dotenv from 'dotenv'
 import app from './src/app.js'
 import seedData from './src/config/seedData.js'
 
 
-dotenv.config()
-
-const PORT = process.env['PORT'];
+const PORT = 3000;
 
 (async () => {
     try {
