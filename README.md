@@ -2,6 +2,11 @@
 Trabalho desenvolvido para a disciplina SCC0219 - Introdução ao Desenvolvimento Web
 
 ## Instruções
+### Instale as dependências
+```
+npm i
+```
+
 ### Inicie o backend
 Vá para o diretório backend e digite o comando
 ```
