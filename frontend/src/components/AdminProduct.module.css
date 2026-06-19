@@ -1,0 +1,28 @@
+.box {
+    background-color: #2C2C2C;
+}
+
+.desc {
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 80%;
+}
+
+.name {
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.text{
+    width: 75%;
+}
+
+@media (min-width: 1024px) {
+    .name {
+        width: 10%;
+    }
+    .text {
+        width: 95%;
+    }
+}
