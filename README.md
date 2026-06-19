@@ -1,7 +1,7 @@
 # potion-store
 Trabalho desenvolvido para a disciplina SCC0219 - Introdução ao Desenvolvimento Web
 
-## Instruções
+## Instruções - inicialização
 ### Instale as dependências
 ```
 npm i
@@ -29,3 +29,7 @@ http://localhost:5173/
 ```
 http://localhost:5173/admin
 ```
+
+## Instruções de uso
+* Para criar produto basta clicar no ícone de + e preencher o formulário
+* Para deletar um produto basta clicar no ícone de lixeira
