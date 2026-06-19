@@ -14,8 +14,17 @@
     width: 100%;
 }
 
-.text{
+.text {
     width: 75%;
+    color: gold;
+}
+
+.trash {
+    color: gold;
+}
+
+.trash:hover {
+    color: #a99645;
 }
 
 @media (min-width: 1024px) {
